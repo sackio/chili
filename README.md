@@ -43,6 +43,8 @@ Chili ships with a basic commandline client for making remote requests to Chili 
 
 Note: filesystem endpoints are not included in the client. If you're at the commandline, there are other, more secure options for transferring files between hosts.
 
+The commandline client is also include as a Node module for use in projects.
+
 ## License
 Copyright (c) 2014 Ben Sack
 Licensed under the MIT license.

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+############################################
+# Install Chili's init.d script and NGINX config
+############################################
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+sudo ln -sf "$DIR/chili.init.d" "/etc/init.d/chili"
+sudo update-rc.d chili defaults
+sudo ln -sf "$DIR/chili.nginx.conf" "/etc/nginx/sites-available/chili"
+sudo ln -sf "/etc/nginx/sites-available/chili" "/etc/nginx/sites-enabled/chili"
+sudo service nginx reload

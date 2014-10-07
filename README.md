@@ -39,6 +39,7 @@ Chili ships with a basic commandline client for making remote requests to Chili 
 * **-P** - process to be spawned on the server
 * **-a** - arguments (array) to be included with spawned process
 * **process options** - see above for options accepted for spawning processes through Chili
+* **-q** - run quietly, do not output Chili responses
 
 Note: filesystem endpoints are not included in the client. If you're at the commandline, there are other, more secure options for transferring files between hosts.
 

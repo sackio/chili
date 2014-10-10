@@ -31,15 +31,16 @@ Again, Chili is not meant to provide any kind of sandboxed or public remote acce
 ## Client
 Chili ships with a basic commandline client for making remote requests to Chili servers. The client accepts the following options:
 
-* **-H** - the host domain (including optional port) of the Chili server. Accepts a single host or an array of multiple hosts (which will make serial requests to each host in sequence)
+* **-H** - the host domain (including optional port) of the Chili server.
 * **-u** - username for server
 * **-p** - password for the server
 * **-C** - bash command to be executed on the server (hits the `/exec` endpoint)
 * **-E** - code to be evaluated on the server
 * **-P** - process to be spawned on the server
 * **-a** - arguments (array) to be included with spawned process
-* **process options** - see above for options accepted for spawning processes through Chili
 * **-q** - run quietly, do not output Chili responses
+* **-s** - stream back Chili response as it is received
+* **process options** - see above for options accepted for spawning processes through Chili
 
 Note: filesystem endpoints are not included in the client. If you're at the commandline, there are other, more secure options for transferring files between hosts.
 

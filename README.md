@@ -31,7 +31,7 @@ Again, Chili is not meant to provide any kind of sandboxed or public remote acce
 ## Client
 Chili ships with a basic commandline client for making remote requests to Chili servers. The client accepts the following options:
 
-* **-H** - the host domain (including optional port) of the Chili server.
+* **-H** - the host domain (including optional port) of the Chili server
 * **-u** - username for server
 * **-p** - password for the server
 * **-C** - bash command to be executed on the server (hits the `/exec` endpoint)

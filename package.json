@@ -1,7 +1,7 @@
 {
   "name": "chili",
   "description": "Lightweight and simple RPC daemon",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "homepage": "https://github.com/sackio/chili",
   "author": {
     "name": "Ben Sack",
@@ -28,7 +28,7 @@
     "test": "grunt nodeunit"
   },
   "bin": {
-    "chili": "./lib/chili.js"
+    "chili": "./lib/chili-daemon.js"
   , "chili-client": "./lib/client.js"
   },
   "devDependencies": {
@@ -56,6 +56,7 @@
   , "request": "*"
   , "passport": "*"
   , "passport-http": "*"
+  , "forever-monitor": "*"
   },
   "keywords": []
 }

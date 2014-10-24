@@ -1,3 +1,5 @@
 node_modules
 config.json
 assets/uploads
+*.key
+*.crt

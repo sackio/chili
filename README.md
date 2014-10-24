@@ -9,6 +9,8 @@ Control script and NGINX configuration files are in `./assets/scripts`
 
 Chili can be run from the commandline with `chili --port=8080`. Port defaults to 8000. This will start an HTTP server on the specified port, ready for requests.
 
+Chili can be run as an HTTPS server from the commandline with `--key=[path to server key]` and `--crt=[path to server certificate]`.
+
 Chili includes a lightweight commandline client for interacting with a Chili server running on another host. The client is accessible from the commandline with `chili-client <args>`.
 
 ## Server
@@ -24,7 +26,7 @@ Chili exposes the following endpoints to remote requests:
 ## Access Control
 Just in case it doesn't go without saying, unprotected remote access is a **REALLY BAD IDEA**. Chili is meant to be used as a quick and easy RPC tool, mainly for use with internal servers, or behind other access controls such as a web server (i.e. NGINX) or a firewall. When used with HTTPS, HTTP authentication, and requester whitelisting, Chili might be suitable for more public use, assuming requesters can be trusted.
 
-Chili includes some basic application-level tools for controlling access and user rights. By including `users` as an environmental variable array, Chili will require HTTP authentication for all endpoints. Elements of the `users` array should be objects including `username` and `password` (used for HTTP authentication), and optional `uid` (sets uid to this value for all requests), `gid` (sets gid for all requests) (if `uid` and/or `gid` is set, only `/ps` endpoints will be permitted), `allow` (a regular expression that a full url must match in order to accept the request from the user), and `deny` (a regular expression that a full url must not match in order to be accepted).
+Chili includes some basic application-level tools for controlling access and user rights. By including `authenticate` as `true` and `users` as an environmental variable array, Chili will require HTTP authentication for all endpoints. Elements of the `users` array should be objects including `username` and `password` (used for HTTP authentication), `allow` (a regular expression that a full url must match in order to accept the request from the user), and `disallow` (a regular expression that a full url must not match in order to be accepted).
 
 Again, Chili is not meant to provide any kind of sandboxed or public remote access to a system. If you need something like this, check out some of the other fine solutions that are much more battle-hardened and production-ready.
 
@@ -40,6 +42,7 @@ Chili ships with a basic commandline client for making remote requests to Chili 
 * **-a** - arguments (array) to be included with spawned process
 * **-q** - run quietly, do not output Chili responses
 * **-s** - stream back Chili response as it is received
+* **-ssl** - accept invalid/ self-signed SSL certificates
 * **process options** - see above for options accepted for spawning processes through Chili
 
 Note: filesystem endpoints are not included in the client. If you're at the commandline, there are other, more secure options for transferring files between hosts.

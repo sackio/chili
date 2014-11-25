@@ -7,7 +7,7 @@ var FSTK = require('fstk')
   , Path = require('path')
   , Optionall = require('optionall')
   , O = new Optionall({'__dirname': Path.resolve(module.filename + '/../..')})
-  , Chili = new require('../lib/chili.js')(Belt.extend(O, {
+  , Chili = new require('../lib/server.js')(Belt.extend(O, {
       'key': Path.resolve(module.filename + '/../../chili.key')
     , 'crt': Path.resolve(module.filename + '/../../chili.crt')
     , 'port': 9000

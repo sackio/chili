@@ -20,7 +20,7 @@
       "url": "https://github.com/sackio/chili/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "lib/chili",
+  "main": "lib/server",
   "engines": {
     "node": ">= 0.10.0"
   },

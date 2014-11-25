@@ -1,6 +1,6 @@
 'use strict';
 
-var Chili = new require('../lib/chili.js')()
+var Chili = new require('../lib/server.js')()
   , FSTK = require('fstk')
   , Async = require('async')
   , _ = require('underscore')

@@ -11,10 +11,6 @@ var Chili = new require('../lib/chili.js')()
 ;
 
 exports['tests'] = {
-  setUp: function(done) {
-    // setup here
-    done();
-  },
   'no args': function(test) {
     var globals = {};
     return Async.waterfall([
@@ -111,5 +107,58 @@ exports['tests'] = {
       test.ok(!err);
       return test.done();
     });
-  },
+  }
+, 'ps-quiet': function(test){
+    return Request('http://localhost:' + Chili.settings.port + '/ps?command=printenv&quiet=true'
+    , {'json': false}, function(err, res, body){
+      test.ok(!err);
+
+      test.ok(!body.match(new RegExp('USER=' + Chili.settings.username)));
+      test.ok(!body.match(/<stdout>/g));
+      test.ok(!body.match(/<stderr>/g));
+
+      return test.done();
+    });
+  }
+, 'ps-uid': function(test){
+    return Request('http://localhost:' + Chili.settings.port + '/ps?command=printenv'
+    , {'json': false}, function(err, res, body){
+      test.ok(!err);
+
+      test.ok(body.match(new RegExp('USER=' + Chili.settings.username)));
+
+      return test.done();
+    });
+  }
+, 'ps-root-uid': function(test){
+    return Request('http://localhost:' + Chili.settings.port + '/ps?command=printenv&uid=0'
+    , {'json': false}, function(err, res, body){
+      test.ok(!err);
+
+      test.ok(body.match(new RegExp('EPERM<\/error>')));
+
+      return test.done();
+    });
+  }
+, 'exec-uid': function(test){
+    return Request('http://localhost:' + Chili.settings.port + '/exec?command=printenv'
+    , {'json': true}, function(err, res, body){
+      test.ok(!err);
+
+      test.ok(body.stdout.match(new RegExp('USER=' + Chili.settings.username)));
+
+      return test.done();
+    });
+  }
+, 'exec-root-uid': function(test){
+    return Request('http://localhost:' + Chili.settings.port + '/exec?command=printenv&uid=0'
+    , {'json': true}, function(err, res, body){
+
+      test.ok(!err);
+
+      test.ok(body.stdout.match(new RegExp('USER=root')));
+
+      return test.done();
+    });
+  }
 };

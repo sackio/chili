@@ -1,11 +1,15 @@
 'use strict';
 
-var Chili = new require('../lib/server.js')()
+var Belt = require('jsbelt')
+  , Path = require('path')
+  , Optionall = require('optionall')
+  , O = new Optionall({'__dirname': Path.resolve(module.filename + '/../..')})
+  , Chili = new require('../lib/server.js')(Belt.extend(O, {
+      'port': 54115
+    }))
   , FSTK = require('fstk')
   , Async = require('async')
   , _ = require('underscore')
-  , Belt = require('jsbelt')
-  , Path = require('path')
   , Request = require('request')
   , Client = require('../lib/client.js')()
 ;

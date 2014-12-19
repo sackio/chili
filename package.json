@@ -1,7 +1,7 @@
 {
   "name": "chili",
   "description": "Lightweight and simple RPC daemon",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "homepage": "https://github.com/sackio/chili",
   "author": {
     "name": "Ben Sack",
@@ -56,6 +56,7 @@
   , "passport": "*"
   , "passport-http": "*"
   , "forever-monitor": "*"
+  , "winston": "*"
   },
   "keywords": []
 }

@@ -23,7 +23,7 @@ var gb = {}
 
 log.add(Winston.transports.Console, {'level': 'debug', 'colorize': true, 'timestamp': false});
 
-exports['tests'] = {
+/*exports['tests'] = {
   setUp: function(done) {
     done();
   },
@@ -96,4 +96,4 @@ exports['tests'] = {
       return test.done();
     });
   }
-};
+};*/
